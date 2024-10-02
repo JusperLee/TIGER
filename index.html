@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+	<!-- <link rel="stylesheet" href="./static/css/bulma.min.css"> -->
+	<link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+	<link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+	<!-- <link rel="stylesheet" href="./static/css/fontawesome.all.min.css"> -->
+	<!-- <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"> -->
+	<link rel="stylesheet" href="./static/css/index.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script defer src="./static/js/fontawesome.all.min.js"></script>
+	<script src="./static/js/bulma-carousel.min.js"></script>
+	<script src="./static/js/bulma-slider.min.js"></script>
+	<script src="./static/js/index.js"></script>
+	<script>(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+	<script>window.twttr = (function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0],
+				t = window.twttr || {};
+			if (d.getElementById(id)) return t;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "https://platform.twitter.com/widgets.js";
+			fjs.parentNode.insertBefore(js, fjs);
+
+			t._e = [];
+			t.ready = function (f) {
+				t._e.push(f);
+			};
+
+			return t;
+		}(document, "script", "twitter-wjs"));</script>
+	<style type="text/css">
+		body {
+			font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+			font-weight: 300;
+			font-size: 18px;
+			margin-left: auto;
+			margin-right: auto;
+			width: 1100px;
+		}
+
+		h1 {
+			font-size: 32px;
+			font-weight: 300;
+		}
+
+		.disclaimerbox {
+			background-color: #eee;
+			border: 1px solid #eeeeee;
+			border-radius: 10px;
+			-moz-border-radius: 10px;
+			-webkit-border-radius: 10px;
+			padding: 20px;
+		}
+
+		video.header-vid {
+			height: 140px;
+			border: 1px solid black;
+			border-radius: 10px;
+			-moz-border-radius: 10px;
+			-webkit-border-radius: 10px;
+		}
+
+		img.header-img {
+			height: 140px;
+			border: 1px solid black;
+			border-radius: 10px;
+			-moz-border-radius: 10px;
+			-webkit-border-radius: 10px;
+		}
+
+		img.rounded {
+			border: 1px solid #eeeeee;
+			border-radius: 10px;
+			-moz-border-radius: 10px;
+			-webkit-border-radius: 10px;
+		}
+
+		a:link,
+		a:visited {
+			color: #1367a7;
+			text-decoration: none;
+		}
+
+		a:hover {
+			color: #208799;
+		}
+
+		td.dl-link {
+			height: 160px;
+			text-align: center;
+			font-size: 22px;
+		}
+
+		code {
+			display: block;
+			white-space: pre-wrap font-family: Consolas, "courier new";
+			color: crimson;
+			background-color: #f1f1f1;
+			padding: 2px;
+			font-size: 105%;
+		}
+
+		pre {
+			font-family: monospace;
+		}
+
+		.layered-paper-big {
+			/* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+			box-shadow:
+				0px 0px 1px 1px rgba(0, 0, 0, 0.35),
+				/* The top layer shadow */
+				5px 5px 0 0px #fff,
+				/* The second layer */
+				5px 5px 1px 1px rgba(0, 0, 0, 0.35),
+				/* The second layer shadow */
+				10px 10px 0 0px #fff,
+				/* The third layer */
+				10px 10px 1px 1px rgba(0, 0, 0, 0.35),
+				/* The third layer shadow */
+				15px 15px 0 0px #fff,
+				/* The fourth layer */
+				15px 15px 1px 1px rgba(0, 0, 0, 0.35),
+				/* The fourth layer shadow */
+				20px 20px 0 0px #fff,
+				/* The fifth layer */
+				20px 20px 1px 1px rgba(0, 0, 0, 0.35),
+				/* The fifth layer shadow */
+				25px 25px 0 0px #fff,
+				/* The fifth layer */
+				25px 25px 1px 1px rgba(0, 0, 0, 0.35);
+			/* The fifth layer shadow */
+			margin-left: 10px;
+			margin-right: 45px;
+		}
+
+		.paper-big {
+			/* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+			box-shadow:
+				0px 0px 1px 1px rgba(0, 0, 0, 0.35);
+			/* The top layer shadow */
+
+			margin-left: 10px;
+			margin-right: 45px;
+		}
+
+
+		.layered-paper {
+			/* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+			box-shadow:
+				0px 0px 1px 1px rgba(0, 0, 0, 0.35),
+				/* The top layer shadow */
+				5px 5px 0 0px #fff,
+				/* The second layer */
+				5px 5px 1px 1px rgba(0, 0, 0, 0.35),
+				/* The second layer shadow */
+				10px 10px 0 0px #fff,
+				/* The third layer */
+				10px 10px 1px 1px rgba(0, 0, 0, 0.35);
+			/* The third layer shadow */
+			margin-top: 5px;
+			margin-left: 10px;
+			margin-right: 30px;
+			margin-bottom: 5px;
+		}
+
+		.vert-cent {
+			position: relative;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		hr {
+			border: 0;
+			height: 1px;
+			background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+		}
+	</style>
+
+	<html>
+
+	<head>
+		<title>TIGER: Time-frequency Interleaved Gain Extraction and Reconstruction for Efficient Speech Separation
+		</title>
+		<meta property="og:image" content="./images/paper.png" />
+		<!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
+		<meta property="og:title"
+			content="TIGER: Time-frequency Interleaved Gain Extraction and Reconstruction for Efficient Speech Separation" />
+		<meta property="og:description"
+			content="TIGER is a lightweight model for speech separation which effectively extracts key acoustic features through frequency band-split, multi-scale and full-frequency-frame modeling." />
+
+		<script async src=""></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() { dataLayer.push(arguments); }
+			gtag('js', new Date());
+
+			gtag('config', 'UA-75863369-6');
+		</script>
+		<link rel="icon" type="image/png"
+			href="https://cdn2.iconfinder.com/data/icons/ios-14-custom-application/62/application-38-512.png" />
+		<script async defer src="https://buttons.github.io/buttons.js"></script>
+	</head>
+
+<body>
+	<script type="text/javascript" src="script.js"></script>
+	<br>
+	<center>
+		<!-- <img class="round" style="width:500px" src="./images/CPM/cvpr.jpg"/> -->
+		<!-- <br/> -->
+		<!-- <br/> -->
+		<!-- <hr> -->
+		<span style="font-size:36px">TIGER: Time-frequency Interleaved Gain Extraction and Reconstruction for Efficient
+			Speech Separation</span>
+		<br>
+		<!-- <hr> -->
+		<!-- </br> -->
+		<!-- <span style="font-size:22px; color:#011B56;">━ <a href="https://openaccess.thecvf.com/CVPR2021">CVPR 2021</a> ━</span> -->
+
+		<!-- <br></br> -->
+		<span style="font-size:20px; color:#011B56;">━ <a href="https://openreview.net/pdf?id=rzx3vcvlzj">Arxiv 2024</a> ━</span>
+		<br>
+		<table align=center width=750px>
+			<table align=center width=475px>
+				<tr>
+					<td align=center width=150px>
+						<center>
+							<span style="font-size:22px">Mohan Xu*</span>
+						</center>
+					</td>
+					<td align=center width=150px>
+						<center>
+							<span style="font-size:22px"><a href="https://cslikai.cn">Kai Li*</a></span>
+						</center>
+					</td>
+					<td align=center width=150px>
+						<center>
+							<span style="font-size:22px">Guo Chen</span>
+						</center>
+					</td>
+					<td align=center width=150px>
+						<center>
+							<span style="font-size:22px">Xiaolin Hu</span>
+						</center>
+					</td>
+				</tr>
+			</table>
+			<table align=center width=700px>
+				<tr>
+					<td align=center>
+						<center>
+							<span style="font-size:20px"><a href="https://www.cs.tsinghua.edu.cn/">Tsinghua
+									University</a>
+								<!-- <img class="img" width=100px src="./images/vinai-logo.png"></img> -->
+							</span><br>
+							<span style="font-size:15px">These authors contributed equally</span>
+							<!-- <img class="img" width=100px src="./images/vinai-logo.png"></img> -->
+						</center>
+					</td>
+				</tr>
+			</table>
+			<table align=center width=600px>
+				<tr>
+					<td align=center width=120px>
+						<center>
+							<span style="font-size:22px"><a href='xxx'>[arXiv
+									📝]</a></span>
+						</center>
+					</td>
+					<td align=center width=120px>
+						<center>
+							<span style="font-size:22px"><a href='https://github.com/JusperLee/TIGER'>[code
+									⚙️]</a></span><br>
+						</center>
+					</td>
+					<!-- <td align=center, width=120px>
+						<center>
+							<span style="font-size:22px"><a href='#'>[poster 🖼️]</a></span><br>
+
+						</center>
+					</td> -->
+					<td align=center, width=120px>
+						<center>
+							<span style="font-size:22px"><a href='https://huggingface.co/JusperLee/Apollo'>[EchoSet
+								🖼️]</a></span><br>
+
+						</center>
+					</td>
+				</tr>
+			</table>
+		</table>
+	</center>
+	<br>
+	<center>
+		<img class="round" style="width:200px" src="./assets/logo.png" />
+		<!-- <p style="max-width:750px;">Given an edit specified by users in <a style="color:red;">an example image</a> (e.g., dog pose),<br>Our method can <a style="color:green;"><b>automatically</b> transfer that edit to other test images</a> (e.g., all dog same pose).</p> -->
+		<p style="max-width:750px;"><a style="color:red;">TIGER</a> is a <a style="color: blue;"> lightweight model </a>
+			for speech separation which
+			<a style="color:green;">effectively extracts key acoustic features through frequency band-split, multi-scale
+				and full-frequency-frame modeling.</a>
+	</center>
+	<hr>
+	<table align=center width=850px>
+		<center>
+			<h1>Abstract</h1>
+		</center>
+		<tr>
+			<td style="text-align: justify;">
+				In recent years, much speech separation research has focused primarily on improving model performance.
+				However, for low-latency speech processing systems, computational efficiency is equally critical.
+				In this paper, we propose a speech separation model with significantly reduced parameter size and
+				computational cost:
+				<i>Time-Frequency Interleaved Gain Extraction and Reconstruction Network (TIGER)</i>.
+				<a style="background-color:LightYellow;color:red">TIGER leverages prior knowledge to divide frequency
+					bands and applies compression on frequency information.
+					We employ a multi-scale selective attention (MSA) module to extract contextual features,
+					while introducing a full-frequency-frame attention (F^3A) module to capture both temporal and
+					frequency contextual information. </a>
+				Additionally, to more realistically evaluate the performance of speech separation models in complex
+				acoustic environments,
+				we introduce a novel dataset called <i>EchoSet</i>. This dataset includes noise and more realistic
+				reverberation
+				(e.g., considering object occlusions and material properties), with speech from two speakers overlapping
+				at random proportions.
+				<a style="color:blue;"> Experimental results demonstrated that TIGER significantly outperformed
+					state-of-the-art (SOTA) model TF-GridNet
+					on the EchoSet dataset in both inference speed and separation quality, while reducing the number of
+					parameters by <b>94.3</b>%
+					and the MACs by <b>95.3</b>%. </a>These results indicate that by utilizing frequency band-split and
+				interleaved modeling structures,
+				TIGER achieves a substantial reduction in parameters and computational costs while maintaining high
+				performance.
+				Notably, TIGER is the first speech separation model with fewer than <b>1 million parameters</b>
+				that achieves performance close to the SOTA model.
+			</td>
+		</tr>
+	</table>
+	<br>
+	<center>
+		<table align=center width=850px>
+			<tr>
+				<td width=260px>
+					<center>
+						<img class="round" style="width:1000px" src="./assets/TIGER.png" />
+					</center>
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td>
+					<center>
+						Overall pipeline of the model architecture of <a style="color:rgb(255, 136, 0);">TIGER</a> and
+						its
+						<a style="color:rgb(187, 0, 255);">modules</a>.
+					</center>
+				</td>
+			</tr>
+		</table>
+	</center>
+	<hr>
+
+	<center>
+		<h1>Results on Speech Separation</h1>
+	</center>
+	<center>
+		<p><img class="round" style='width: 1000px' src='./assets/result.png'>
+		<figcaption>
+			<a style="color: hotpink;">Performance comparisons</a> of TIGER and other existing separation models on <a
+				style="color: orange;">Libri2Mix, LRS2-2Mix, and EchoSet</a>.
+			Bold indicates optimal performance, and italics indicate suboptimal performance.
+		</figcaption>
+	</center>
+	<center>
+		<p><img class="round" style='width: 1000px' src='./assets/efficiency.png'>
+		<figcaption>
+			<a style="color: hotpink;">Efficiency</a> comparisons of TIGER and other models.
+		</figcaption>
+	</center>
+	<hr>
+
+	<center>
+		<h1>Results on Cinematic Sound Separation</h1>
+	</center>
+	<center>
+		<p><img class="round" style='width: 1000px' src='./assets/dnr.png'>
+		<figcaption>Comparison of <a style="color: hotpink;">performance and efficiency</a> of cinematic sound
+			separation models on <a style="color: orange;">DnR</a>.
+			‘*’ means the result comes from the original paper of DnR.
+		</figcaption>
+	</center>
+	<hr>
+
+	<center>
+		<h1>Speech Separation Demo</h1>
+	</center>
+	<center>
+		<h3 style="font-weight: bold; color: #ECAEA7">EchoSet Sample I</h3>
+		<table class="table table-hover pt-2">
+			<thread>
+				<tr>
+					<th style="text-align: center">Mixture</th>
+				</tr>
+			</thread>
+			<tbody>
+				<tr>
+					<td style="text-align: center;vertical-align:middle;width: 365px"><audio controls="controls"
+							style="width: 100%;">
+							<source src="assets/sample1/GroundTruth/mix.wav" autoplay="">Your browser does
+							not support the audio element.
+						</audio>
+					</td>
+				</tr>
+		</table>
+		<table class="table table-hover pt-2">
+			<thead>
+				<tr>
+					<th style="text-align: center">Ground Truth</th>
+					<th style="text-align: center">TF-GridNet</th>
+					<th style="text-align: center">TIGER</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls"
+							style="width: 100%;">
+							<source src="assets/sample1/GroundTruth/s2.wav" autoplay="">Your browser does
+							not support the audio element.
+						</audio><img controls="" class="rounded" style="width: 100%;"
+							src="assets/sample1/spec/ground_truth_s1.png">
+					</td>
+					<td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls"
+							style="width: 100%;">
+							<source src="assets/sample1/TFGNet/s1.wav" autoplay="">Your browser does not
+							support the audio element.
+						</audio><img controls="" class="rounded" style="width: 100%;"
+							src="assets/sample1/spec/TFGNet_s1.png"></td>
+					<td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls"
+							style="width: 100%;">
+							<source src="assets/sample1/TIGER/s1.wav" autoplay="">Your browser does not
+							support the audio element.
+						</audio><img controls="" class="rounded" style="width: 100%;"
+							src="assets/sample1/spec/TIGER_s1.png"></td>
+				</tr>
+				<tr>
+					<td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls"
+							style="width: 100%;">
+							<source src="assets/sample1/GroundTruth/s1.wav" autoplay="">Your browser does
+							not support the audio element.
+						</audio><img controls="" class="rounded" style="width: 100%;"
+							src="assets/sample1/spec/ground_truth_s2.png">
+					</td>
+					<td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls"
+							style="width: 100%;">
+							<source src="assets/sample1/TFGNet/s2.wav" autoplay="">Your browser does not
+							support the audio element.
+						</audio><img controls="" class="rounded" style="width: 100%;"
+							src="assets/sample1/spec/TFGNet_s2.png"></td>
+					<td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls"
+							style="width: 100%;">
+							<source src="assets/sample1/TIGER/s2.wav" autoplay="">Your browser does not
+							support the audio element.
+						</audio><img controls="" class="rounded" style="width: 100%;"
+							src="assets/sample1/spec/TIGER_s2.png"></td>
+				</tr>
+			</tbody>
+		</table>
+	</center>
+	<center>
+		<h3 style="font-weight: bold; color: #ECAEA7">EchoSet Sample II</h3>
+		<table class="table table-hover pt-2">
+			<thread>
+				<tr>
+					<th style="text-align: center">Mixture</th>
+				</tr>
+			</thread>
+			<tbody>
+				<tr>
+					<td style="text-align: center;vertical-align:middle;width: 365px"><audio controls="controls"
+							style="width: 100%;">
+							<source src="assets/sample2/GroundTruth/mix.wav" autoplay="">Your browser does
+							not support the audio element.
+						</audio>
+					</td>
+				</tr>
+		</table>
+		<table class="table table-hover pt-2">
+			<thead>
+				<tr>
+					<th style="text-align: center">Ground Truth</th>
+					<th style="text-align: center">TF-GridNet</th>
+					<th style="text-align: center">TIGER</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls"
+							style="width: 100%;">
+							<source src="assets/sample2/GroundTruth/s2.wav" autoplay="">Your browser does
+							not support the audio element.
+						</audio><img controls="" class="rounded" style="width: 100%;"
+							src="assets/sample2/spec/ground_truth_s1.png">
+					</td>
+					<td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls"
+							style="width: 100%;">
+							<source src="assets/sample2/TFGNet/s2.wav" autoplay="">Your browser does not
+							support the audio element.
+						</audio><img controls="" class="rounded" style="width: 100%;"
+							src="assets/sample2/spec/TFGNet_s1.png"></td>
+					<td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls"
+							style="width: 100%;">
+							<source src="assets/sample2/TIGER/s1.wav" autoplay="">Your browser does not
+							support the audio element.
+						</audio><img controls="" class="rounded" style="width: 100%;"
+							src="assets/sample2/spec/TIGER_s1.png"></td>
+				</tr>
+				<tr>
+					<td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls"
+							style="width: 100%;">
+							<source src="assets/sample2/GroundTruth/s1.wav" autoplay="">Your browser does
+							not support the audio element.
+						</audio><img controls="" class="rounded" style="width: 100%;"
+							src="assets/sample2/spec/ground_truth_s2.png">
+					</td>
+					<td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls"
+							style="width: 100%;">
+							<source src="assets/sample2/TFGNet/s1.wav" autoplay="">Your browser does not
+							support the audio element.
+						</audio><img controls="" class="rounded" style="width: 100%;"
+							src="assets/sample2/spec/TFGNet_s2.png"></td>
+					<td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls"
+							style="width: 100%;">
+							<source src="assets/sample2/TIGER/s2.wav" autoplay="">Your browser does not
+							support the audio element.
+						</audio><img controls="" class="rounded" style="width: 100%;"
+							src="assets/sample2/spec/TIGER_s2.png"></td>
+				</tr>
+			</tbody>
+		</table>
+	</center>
+	<center>
+		<h3 style="font-weight: bold; color: #ECAEA7">EchoSet Sample III</h3>
+		<table class="table table-hover pt-2">
+			<thread>
+				<tr>
+					<th style="text-align: center">Mixture</th>
+				</tr>
+			</thread>
+			<tbody>
+				<tr>
+					<td style="text-align: center;vertical-align:middle;width: 365px"><audio controls="controls"
+							style="width: 100%;">
+							<source src="assets/sample3/GroundTruth/mix.wav" autoplay="">Your browser does
+							not support the audio element.
+						</audio>
+					</td>
+				</tr>
+		</table>
+		<table class="table table-hover pt-2">
+			<thead>
+				<tr>
+					<th style="text-align: center">Ground Truth</th>
+					<th style="text-align: center">TF-GridNet</th>
+					<th style="text-align: center">TIGER</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls"
+							style="width: 100%;">
+							<source src="assets/sample3/GroundTruth/s2.wav" autoplay="">Your browser does
+							not support the audio element.
+						</audio><img controls="" class="rounded" style="width: 100%;"
+							src="assets/sample3/spec/ground_truth_s1.png">
+					</td>
+					<td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls"
+							style="width: 100%;">
+							<source src="assets/sample3/TFGNet/s1.wav" autoplay="">Your browser does not
+							support the audio element.
+						</audio><img controls="" class="rounded" style="width: 100%;"
+							src="assets/sample3/spec/TFGNet_s1.png"></td>
+					<td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls"
+							style="width: 100%;">
+							<source src="assets/sample3/TIGER/s1.wav" autoplay="">Your browser does not
+							support the audio element.
+						</audio><img controls="" class="rounded" style="width: 100%;"
+							src="assets/sample3/spec/TIGER_s1.png"></td>
+				</tr>
+				<tr>
+					<td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls"
+							style="width: 100%;">
+							<source src="assets/sample3/GroundTruth/s1.wav" autoplay="">Your browser does
+							not support the audio element.
+						</audio><img controls="" class="rounded" style="width: 100%;"
+							src="assets/sample3/spec/ground_truth_s2.png">
+					</td>
+					<td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls"
+							style="width: 100%;">
+							<source src="assets/sample3/TFGNet/s2.wav" autoplay="">Your browser does not
+							support the audio element.
+						</audio><img controls="" class="rounded" style="width: 100%;"
+							src="assets/sample3/spec/TFGNet_s2.png"></td>
+					<td style="text-align: center;vertical-align:middle;width: 800px"><audio controls="controls"
+							style="width: 100%;">
+							<source src="assets/sample3/TIGER/s2.wav" autoplay="">Your browser does not
+							support the audio element.
+						</audio><img controls="" class="rounded" style="width: 100%;"
+							src="assets/sample3/spec/TIGER_s2.png"></td>
+				</tr>
+			</tbody>
+		</table>
+	</center>
+	<hr>
+	<center>
+		<h1>Cinematic Sound Demo</h1>
+	</center>
+	<center>
+		<table class="table table-hover pt-2">
+			<thread>
+				<tr>
+					<th style="text-align: center">Deadpool</th>
+				</tr>
+			</thread>
+			<tbody>
+				<tr>
+					<td style="text-align: center;vertical-align:middle;width: 365px">
+						<video controls style="width: 100%;">
+							<source src="assets/dnr-demo/sample1/mixture.mp4" type="video/mp4">
+						</video>
+					</td>
+				</tr>
+		</table>
+		<table class="table table-hover pt-2">
+			<thead>
+				<tr>
+					<th style="text-align: center">Dialog</th>
+					<th style="text-align: center">Music</th>
+					<th style="text-align: center">Effect</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align: center;vertical-align:middle;width: 365px">
+						<video controls style="width: 100%;">
+							<source src="assets/dnr-demo/sample1/dialog.mp4" type="video/mp4">
+						</video>
+					</td>
+					<td style="text-align: center;vertical-align:middle;width: 365px">
+						<video controls style="width: 100%;">
+							<source src="assets/dnr-demo/sample1/music.mp4" type="video/mp4">
+						</video>
+					</td>
+					<td style="text-align: center;vertical-align:middle;width: 365px">
+						<video controls style="width: 100%;">
+							<source src="assets/dnr-demo/sample1/effect.mp4" type="video/mp4">
+						</video>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</center>
+	<center>
+		<table class="table table-hover pt-2">
+			<thread>
+				<tr>
+					<th style="text-align: center">The Wandering Earth</th>
+				</tr>
+			</thread>
+			<tbody>
+				<tr>
+					<td style="text-align: center;vertical-align:middle;width: 365px">
+						<video controls style="width: 100%;">
+							<source src="assets/dnr-demo/sample2/mixture.mp4" type="video/mp4">
+						</video>
+					</td>
+				</tr>
+		</table>
+		<table class="table table-hover pt-2">
+			<thead>
+				<tr>
+					<th style="text-align: center">Dialog</th>
+					<th style="text-align: center">Music</th>
+					<th style="text-align: center">Effect</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align: center;vertical-align:middle;width: 365px">
+						<video controls style="width: 100%;">
+							<source src="assets/dnr-demo/sample2/dialog.mp4" type="video/mp4">
+						</video>
+					</td>
+					<td style="text-align: center;vertical-align:middle;width: 365px">
+						<video controls style="width: 100%;">
+							<source src="assets/dnr-demo/sample2/music.mp4" type="video/mp4">
+						</video>
+					</td>
+					<td style="text-align: center;vertical-align:middle;width: 365px">
+						<video controls style="width: 100%;">
+							<source src="assets/dnr-demo/sample2/effect.mp4" type="video/mp4">
+						</video>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</center>
+	<center>
+		<table class="table table-hover pt-2">
+			<thread>
+				<tr>
+					<th style="text-align: center">Captain America</th>
+				</tr>
+			</thread>
+			<tbody>
+				<tr>
+					<td style="text-align: center;vertical-align:middle;width: 365px">
+						<video controls style="width: 100%;">
+							<source src="assets/dnr-demo/sample3/mixture.mp4" type="video/mp4">
+						</video>
+					</td>
+				</tr>
+		</table>
+		<table class="table table-hover pt-2">
+			<thead>
+				<tr>
+					<th style="text-align: center">Dialog</th>
+					<th style="text-align: center">Music</th>
+					<th style="text-align: center">Effect</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align: center;vertical-align:middle;width: 365px">
+						<video controls style="width: 100%;">
+							<source src="assets/dnr-demo/sample3/dialog.mp4" type="video/mp4">
+						</video>
+					</td>
+					<td style="text-align: center;vertical-align:middle;width: 365px">
+						<video controls style="width: 100%;">
+							<source src="assets/dnr-demo/sample3/music.mp4" type="video/mp4">
+						</video>
+					</td>
+					<td style="text-align: center;vertical-align:middle;width: 365px">
+						<video controls style="width: 100%;">
+							<source src="assets/dnr-demo/sample3/effect.mp4" type="video/mp4">
+						</video>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</center>
+	<hr>
+	<table align=center width=900px>
+		<tr>
+			<td width=400px>
+				<left>
+					<center>
+						<h1>Acknowledgements</h1>
+					</center>
+					Website template was borrowed from <a href="http://richzhang.github.io/colorization/">Colorful Image
+						Colorization</a> and <a href="https://nerfies.github.io/">Nerfies</a>; the code can be found <a
+						href="https://github.com/richzhang/webpage-template">here</a> and <a
+						href="https://github.com/nerfies/nerfies.github.io">here</a>. Thank you (.❛ ᴗ ❛.).
+				</left>
+			</td>
+		</tr>
+	</table>
+	<center>
+		<a href="javascript:toggleblock('notice')" style="text-align:center;font-size:70%;color:#808080">▶ cslikai.cn's
+			clustrmaps 🌎</a>.
+		<div id="notice" style="display:none; color:#dedede; font-size:.5em;">
+			<p>
+				<script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=XUY5Bbv-l4Negr0uiIqE4axKMGnlqBRBDKL5EpeE2LY&cl=ffffff&w=a"></script>
+			</p>
+		</div>
+	</center>
+	<br>
+</body>
+
+</html>
